@@ -4,7 +4,7 @@ import type { CorsOptions } from 'cors';
 
 const AllowedDomains = [/\.railway\.app$/];
 
-const corsOptions = (): CorsOptions => {
+export const corsOptions = (): CorsOptions => {
   return {
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);

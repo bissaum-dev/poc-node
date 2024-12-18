@@ -11,12 +11,12 @@ let server = express();
 server = Middleware.start(server);
 
 server = Endpoints.GET(server, {
-  '/products': Products.GET,
+  '/product': Products.GET,
   '/wishlist': Wishlist.GET,
 });
 
 server = Endpoints.POST(server, {
-  '/wishlist': Wishlist.POST,
+  '/wishlist/:id': Wishlist.POST,
 });
 
 server = Endpoints.DELETE(server, {

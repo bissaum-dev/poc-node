@@ -1,16 +1,6 @@
-import { Request, Response } from 'express';
-
-const GET = (req: Request, res: Response) => {
-  res.send('Hello World!');
-};
-
-const POST = (req: Request, res: Response) => {
-  res.send('Hello World!');
-};
-
-const DELETE = (req: Request, res: Response) => {
-  res.send('Hello World!');
-};
+import { GET } from './get';
+import { POST } from './post';
+import { DELETE } from './delete';
 
 export const Wishlist = {
   GET,

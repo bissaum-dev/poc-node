@@ -1,8 +1,4 @@
-import { Request, Response } from 'express';
-
-const GET = (req: Request, res: Response) => {
-  res.send('Hello World!');
-};
+import { GET } from './get';
 
 export const Products = {
   GET,

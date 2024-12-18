@@ -7,10 +7,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/**/*.test.ts"
   ],
   "exclude": [
     "node_modules",
