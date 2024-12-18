@@ -1,12 +1,30 @@
-import express, { Request, Response } from "express";
+import express from 'express';
+import { Middleware } from './middlewares';
+import { Endpoints } from './utils/endpoints';
+import { Products } from './app/products';
+import { Wishlist } from './app/wishlist';
 
-const app = express();
 const PORT = 3000;
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
+let server = express();
+
+server = Middleware.start(server);
+
+server = Endpoints.GET(server, {
+  '/products': Products.GET,
+  '/wishlist': Wishlist.GET,
 });
 
-app.listen(PORT, () => {
+server = Endpoints.POST(server, {
+  '/wishlist': Wishlist.POST,
+});
+
+server = Endpoints.DELETE(server, {
+  '/wishlist/:id': Wishlist.DELETE,
+});
+
+server = Middleware.end(server);
+
+server.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
