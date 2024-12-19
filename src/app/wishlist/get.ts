@@ -19,7 +19,7 @@ export const GET = async (req: Request, res: Response) => {
     if (query.empty) {
       const status = ApiResponseStatus.NO_CONTENT;
       const message = 'Nenhum produto foi adicionado na lista de desejos';
-      Log.Warning(`GET ${status}`, message);
+      Log.Warning(`GET ${status}`, req.url);
       res.json({ status, data: { message } } as ApiResponseError);
       return;
     }

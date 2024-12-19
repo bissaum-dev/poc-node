@@ -2,7 +2,7 @@ import cors from 'cors';
 import { Express, Request, Response, NextFunction } from 'express';
 import type { CorsOptions } from 'cors';
 
-const AllowedDomains = [/\.railway\.app$/];
+const AllowedDomains = [/localhost/, /\.railway\.app$/];
 
 export const corsOptions = (): CorsOptions => {
   return {
