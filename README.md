@@ -1,24 +1,27 @@
-# poc-node
+# poc-vue
 
-Prova de conceito entregando API em NodeJS
+Prova de conceito usando NodeJS
 
 ## Desenvolvimento
 
-1 - Instale os pacotes: `npm i`
-2 - Inicie a aplicação: `npm run dev`
+1 - Instale: `npm i`
+
+2 - Rode: `npm run dev`
+
+3 - Acesse: http://localhost:3000
 
 ## Deploy
 
-1 - Compile a aplicação: `npm run build`
-2 - Teste a aplicação: `npm run start`
-3 - Inicie o deploy: `railway up` (Necessário estar logado na sua conta)
+1 - Compile: `npm run build`
 
-## Testes
+2 - Rode: `npm run start`
 
-- Testes unitários: `npm run test`
+3 - Acesse: http://localhost:3000
 
-## Próximos passos
+4 - Suba: `railway up` (Necessário estar logado em uma conta Railway)
 
-1 - Aumentar a cobertura de testes unitários
-2 - Criar cache para dados sem a necessidade de realtime
-3 - Melhorar log gravando/purgando os logs para eventuais consultas
+## Teste unitário
+
+![Teste unitário](public/jest-report.png)
+
+- Execute: `npm run test`

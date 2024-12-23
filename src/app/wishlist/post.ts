@@ -4,9 +4,9 @@ import {
   ApiResponseError,
   ApiResponseStatus,
   ApiResponseSuccess,
-} from '../../types';
-import { db } from '../../utils/firebase';
-import { Log } from '../../utils/log';
+} from '@/types';
+import { db } from '@/utils/firebase';
+import { Log } from '@/utils/log';
 
 interface IResponse {
   productId: string;

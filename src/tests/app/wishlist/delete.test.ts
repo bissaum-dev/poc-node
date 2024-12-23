@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DELETE } from '../delete';
+import { DELETE } from '../../../app/wishlist/delete';
 import { db } from '../../../utils/firebase';
 import { ApiResponseStatus } from '../../../types';
 

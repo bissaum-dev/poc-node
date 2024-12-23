@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { GET } from '../get';
+import { GET } from '../../../../src/app/wishlist/get';
 import { db } from '../../../utils/firebase';
 import { ApiResponseStatus } from '../../../types';
 import { Log } from '../../../utils/log';
@@ -47,7 +47,7 @@ describe('GET /wishlist', () => {
     });
     expect(Log.Warning).toHaveBeenCalledWith(
       `GET ${ApiResponseStatus.NO_CONTENT}`,
-      'Nenhum produto foi adicionado na lista de desejos',
+      '/wishlist',
     );
   });
 

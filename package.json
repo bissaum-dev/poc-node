@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
-    "test": "jest",
+    "test": "npx jest --detectOpenHandles --silent",
     "lint": "eslint src/**/*.ts --fix",
     "format": "prettier --write src/**/*.ts'"
   },
@@ -20,6 +20,9 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "firebase-admin": "^13.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "tsconfig-paths": "^4.2.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {

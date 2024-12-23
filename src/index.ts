@@ -1,8 +1,8 @@
 import express from 'express';
-import { Middleware } from './middlewares';
-import { Endpoints } from './utils/endpoints';
-import { Products } from './app/products';
-import { Wishlist } from './app/wishlist';
+import { Middleware } from '@/middleware';
+import { Endpoints } from '@/utils/endpoints';
+import { Products } from '@/app/products';
+import { Wishlist } from '@/app/wishlist';
 
 const PORT = 3000;
 

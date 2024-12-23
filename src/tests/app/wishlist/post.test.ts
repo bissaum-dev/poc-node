@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { POST } from '../post';
+import { POST } from '../../../../src/app/wishlist/post';
 import { Request, Response } from 'express';
 import { db } from '../../../utils/firebase';
 import { ApiResponseStatus } from '../../../types';
@@ -12,7 +12,7 @@ jest.mock('../../../utils/firebase', () => ({
   },
 }));
 
-describe('POST /addProductInWishlist', () => {
+describe('POST /wishlist/:id', () => {
   let req: any;
   let res: any;
 

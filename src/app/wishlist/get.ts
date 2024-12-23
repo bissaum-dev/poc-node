@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { db } from '../../utils/firebase';
+import { db } from '@/utils/firebase';
 import {
   ApiResponseStatus,
   ApiResponseError,
   ApiResponseSuccess,
-} from '../../types';
-import { Log } from '../../utils/log';
+} from '@/types';
+import { Log } from '@/utils/log';
 
 interface IResponse {
   id: string;

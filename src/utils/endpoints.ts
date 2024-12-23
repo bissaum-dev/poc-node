@@ -1,6 +1,6 @@
 import { Express } from 'express';
-import { Log } from './log';
-import { ApiEndpoints } from '../types';
+import { Log } from '@/utils/log';
+import { ApiEndpoints } from '@/types';
 
 const GET = (server: Express, endpoints: ApiEndpoints) => {
   Object.entries(endpoints).forEach((item) => {

@@ -6,7 +6,7 @@ import {
   LogSuccessTypes,
   LogWarningTypes,
   LogFatalTypes,
-} from '../types';
+} from '@/types';
 
 export const Timestamp = () => new Date().toLocaleString().replace(',', '');
 

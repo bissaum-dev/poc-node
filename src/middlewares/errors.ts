@@ -1,6 +1,6 @@
 import { Express, Request, Response, NextFunction } from 'express';
-import { ApiResponseError, ApiResponseStatus } from '../types';
-import { Log } from '../utils/log';
+import { ApiResponseError, ApiResponseStatus } from '@/types';
+import { Log } from '@/utils/log';
 
 const ErrorResponses: Record<number, string> = {
   [ApiResponseStatus.BAD_REQUEST]:
