@@ -12,6 +12,27 @@ interface IResponse {
   productId: string;
 }
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   delete:
+ *     summary: Remove um produto da lista de desejos
+ *     responses:
+ *       400:
+ *         description: Informe o id do produto a ser removido da lista de desejos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ */
 const productIdNotPassedInUrl = (id: string, url: string) => {
   const schema = z.string().nonempty();
   if (!id || !schema.safeParse(id)) {
@@ -24,18 +45,58 @@ const productIdNotPassedInUrl = (id: string, url: string) => {
   return false;
 };
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   delete:
+ *     summary: Remove um produto da lista de desejos
+ *     responses:
+ *       204:
+ *         description: O produto com esse id não existe na lista de desejos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ */
 const productNonExistsById = async (id: string, url: string) => {
   const product = await db.collection('wishlist').doc(id).get();
   if (!id || !product.exists) {
     const status = ApiResponseStatus.NO_CONTENT;
-    const message =
-      'O produto com esse id não existe para ser removido da lista de desejos';
+    const message = 'O produto com esse id não existe na lista de desejos';
     Log.Warning(`DELETE ${status}`, url);
     return { status, data: { message } } as ApiResponseError;
   }
   return false;
 };
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   delete:
+ *     summary: Remove um produto da lista de desejos
+ *     responses:
+ *       200:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     idProduct:
+ *                       type: string
+ */
 const removeProductFromWishlist = async (id: string, url: string) => {
   const doc = db.collection('wishlist').doc(id);
   await doc.delete();

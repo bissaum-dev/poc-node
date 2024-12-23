@@ -1,7 +1,8 @@
 import { Express } from 'express';
-import { StaticMiddleware } from '@/middlewares/static';
 import { BodyMiddleware } from '@/middlewares/body';
 import { CorsMiddleware } from '@/middlewares/cors';
+import { StaticMiddleware } from '@/middlewares/static';
+import { SwaggerMiddleware } from './middlewares/swagger';
 import { ClientMiddleware, ServerMiddleware } from '@/middlewares/errors';
 
 const start = (server: Express) => {
@@ -12,6 +13,7 @@ const start = (server: Express) => {
 };
 
 const end = (server: Express) => {
+  server = SwaggerMiddleware(server);
   server = ServerMiddleware(server);
   server = ClientMiddleware(server);
   return server;

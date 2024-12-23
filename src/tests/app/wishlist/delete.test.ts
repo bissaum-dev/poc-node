@@ -66,8 +66,7 @@ describe('DELETE /wishlist/:id', () => {
     expect(res.json).toHaveBeenCalledWith({
       status: ApiResponseStatus.NO_CONTENT,
       data: {
-        message:
-          'O produto com esse id não existe para ser removido da lista de desejos',
+        message: 'O produto com esse id não existe na lista de desejos',
       },
     });
   });

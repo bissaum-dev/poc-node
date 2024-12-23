@@ -12,6 +12,27 @@ interface IResponse {
   productId: string;
 }
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   post:
+ *     summary: Adiciona um produto da lista de desejos
+ *     responses:
+ *       400:
+ *         description: Informe o id do produto a ser adicionado na lista de desejos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ */
 const productIdNotPassedInUrl = (id: string, url: string) => {
   const schema = z.string().nonempty();
   if (!id || !schema.safeParse(id)) {
@@ -24,6 +45,27 @@ const productIdNotPassedInUrl = (id: string, url: string) => {
   return false;
 };
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   post:
+ *     summary: Adiciona um produto da lista de desejos
+ *     responses:
+ *       204:
+ *         description: O produto com esse id não existe para ser adicionado na lista de desejos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ */
 const productNonExistsById = async (id: string, url: string) => {
   const product = await db.collection('products').doc(id).get();
   if (!id || !product.exists) {
@@ -36,6 +78,27 @@ const productNonExistsById = async (id: string, url: string) => {
   return false;
 };
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   post:
+ *     summary: Adiciona um produto da lista de desejos
+ *     responses:
+ *       409:
+ *         description: O produto já foi adicionado na lista de desejos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ */
 const productAlreadyInWishlist = async (id: string, url: string) => {
   const wishlist = await db
     .collection('wishlist')
@@ -50,6 +113,26 @@ const productAlreadyInWishlist = async (id: string, url: string) => {
   return false;
 };
 
+/**
+ * @swagger
+ * /wishlist/:id:
+ *   post:
+ *     summary: Adiciona um produto da lista de desejos
+ *     responses:
+ *       201:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: number
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     idProduct:
+ *                       type: string
+ */
 const addProductInWishlist = async (id: string, url: string) => {
   const doc = await db.collection('wishlist').add({ productId: id });
   const status = ApiResponseStatus.CREATED;
